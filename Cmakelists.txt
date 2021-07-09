@@ -1,0 +1,28 @@
+project(imgui)
+
+include_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        backends
+
+        # GLAD
+        ${CMAKE_CURRENT_SOURCE_DIR}/../glad/include
+
+        # GLFW
+        ${CMAKE_CURRENT_SOURCE_DIR}/../glfw/include
+)
+
+file(GLOB
+        IMGUI_SRC
+        "*.cpp"
+        "backends/imgui_impl_opengl3.cpp"
+        "backends/imgui_impl_glfw.cpp"
+        )
+
+add_library(${PROJECT_NAME}
+        ${IMGUI_SRC}
+        )
+
+target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        )
